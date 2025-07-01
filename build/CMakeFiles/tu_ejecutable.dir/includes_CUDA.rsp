@@ -1,0 +1,1 @@
+-I/home/carlos/feCUDA/include -I"/home/carlos/libs/matplotlib-cpp" -I"/home/carlos/forgeffects/.venv/lib/python3.12/site-packages/numpy/_core/include" -I/usr/include/python3.12
