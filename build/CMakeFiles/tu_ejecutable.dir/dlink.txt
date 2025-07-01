@@ -1,1 +1,0 @@
-/usr/bin/nvcc -forward-unknown-to-host-compiler  "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink --options-file CMakeFiles/tu_ejecutable.dir/deviceObjects1.rsp -o CMakeFiles/tu_ejecutable.dir/cmake_device_link.o --options-file CMakeFiles/tu_ejecutable.dir/deviceLinkLibs.rsp -L"/lib/x86_64-linux-gnu"

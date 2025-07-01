@@ -1,3 +1,0 @@
-/home/carlos/feCUDA/build/CMakeFiles/tu_ejecutable.dir
-/home/carlos/feCUDA/build/CMakeFiles/edit_cache.dir
-/home/carlos/feCUDA/build/CMakeFiles/rebuild_cache.dir
