@@ -1,10 +1,10 @@
 # Ignorar carpeta de build
 /build/
+/forgeffects/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
-
 # Configuración local de VS Code
 .vscode/
 

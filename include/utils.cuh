@@ -7,18 +7,41 @@
 #include <types.cuh>
 
 // Macro para verificar errores de CUDA
-#define CHECK_CUDA(call) {                                         \
-    cudaError_t err = (call);                                      \
-    if (err != cudaSuccess) {                                      \
-        fprintf(stderr, "CUDA error at %s:%d: %s\n",               \
-                __FILE__, __LINE__, cudaGetErrorString(err));      \
-        exit(EXIT_FAILURE);                                        \
-    }                                                              \
-}
+#define CHECK_CUDA(call)                                          \
+    {                                                             \
+        cudaError_t err = (call);                                 \
+        if (err != cudaSuccess)                                   \
+        {                                                         \
+            fprintf(stderr, "CUDA error at %s:%d: %s\n",          \
+                    __FILE__, __LINE__, cudaGetErrorString(err)); \
+            exit(EXIT_FAILURE);                                   \
+        }                                                         \
+    }
 
-// Función común para imprimir resultados
-void imprimir_resultado(float* h_C, int batch, int M, int N, int max_rows = 8, int max_cols = 8);
+// Macro para verificar errores de CUDA sin salir del programa
+#define CHECK_CUDA_SAFE(call)                                     \
+    {                                                             \
+        cudaError_t err = (call);                                 \
+        if (err != cudaSuccess)                                   \
+        {                                                         \
+            fprintf(stderr, "CUDA error at %s:%d: %s\n",          \
+                    __FILE__, __LINE__, cudaGetErrorString(err)); \
+            return false;                                         \
+        }                                                         \
+    }
 
-Tensor wrap_device_data_as_tensor(float *device_ptr, int batch, int M, int N);
+// Función para imprimir TensorResult
+void imprimir_tensor(const TensorResult &tensor, int max_rows = 10, int max_cols = 10,
+                     const char *nombre_tensor = "Tensor", bool mostrar_estadisticas = true);
+
+// Función para leer matrices 3D desde archivo de texto
+bool leer_matriz_3d_desde_archivo(const char *archivo, TensorResult &tensor,
+                                  int batch, int M, int N, int K = 1);
+
+// Función para limpiar y verificar el estado del dispositivo CUDA
+void cuda_cleanup_and_check();
+
+// Función para limpiar memoria de TensorResult de forma segura
+void safe_tensor_cleanup(TensorResult &tensor);
 
 #endif
